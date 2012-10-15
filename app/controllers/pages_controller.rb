@@ -13,16 +13,18 @@ class PagesController < ApplicationController
 
   private
     def search query
-      html = search_engine query
-      text = html2text html
+      text = ""
+      for i in 0..2
+        html = search_engine query, i
+        text += html2text html
+      end
       names = name_filter text
-      return names.to_s
       name = who_optimizer query, names
       name
     end
 
-    def search_engine query
-      enc_uri = URI.escape "http://www.baidu.com/s?wd=#{query}"
+    def search_engine query, page
+      enc_uri = URI.escape "http://www.baidu.com/s?wd=#{query}&pn=#{page*10}"
       uri = URI.parse enc_uri
       uri.read
     end
@@ -34,9 +36,9 @@ class PagesController < ApplicationController
     end
 
     def name_filter text
-      File.open('name-selector/text', 'w') {|f| f.write(text)}
-      names_str = `name-selector/findscn -i < name-selector/text`
-      puts names_str
+      File.open('name-selector/input', 'w') {|f| f.write(text)}
+      `./get-names.sh`
+      names_str = `cat name-selector/output`
       names = names_str.split
       count = {}
       names.each do |name|
@@ -46,6 +48,7 @@ class PagesController < ApplicationController
           count[name] = 1
         end
       end
+      puts count.to_s
       sorted = count.sort_by { |name, number| number }
       sorted_names = []
       sorted.each do |pair|
