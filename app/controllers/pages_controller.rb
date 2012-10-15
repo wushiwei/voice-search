@@ -13,10 +13,10 @@ class PagesController < ApplicationController
 
   private
     def search query
-      "answer"
       html = search_engine query
       text = html2text html
-      names = name_filter html
+      names = name_filter text
+      return names.to_s
       name = who_optimizer query, names
       name
     end
@@ -34,8 +34,8 @@ class PagesController < ApplicationController
     end
 
     def name_filter text
-      File.open('text', 'w') {|f| f.write(text)}
-      names_str = `name-selector/selector.sh < name-selector/text`
+      File.open('name-selector/text', 'w') {|f| f.write(text)}
+      names_str = `name-selector/findscn -i < name-selector/text`
       puts names_str
       names = names_str.split
       count = {}

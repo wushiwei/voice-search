@@ -1,0 +1,14 @@
+../obj/crf_ner_nr_processor.o: crf_ner_nr_processor.cxx crf_ner_nr_processor.hxx \
+ processor.hxx ../source/config_factory.hxx ../source/iconfig.hxx \
+ ../source/simple_config.hxx ../source/token_impl.hxx ../source/token.hxx \
+ ../source/utf8.hxx ../source/ilexicon.hxx ../source/lexicon_factory.hxx \
+ ../source/ilexicon.hxx ../source/trie_lexicon.hxx ../source/datrie.hxx \
+ ../source/double_array.hxx ../source/mmap.hxx ../crfpp/crfpp.h
+../obj/prepare_processor.o: prepare_processor.cxx prepare_processor.hxx \
+ processor.hxx ../source/config_factory.hxx ../source/iconfig.hxx \
+ ../source/simple_config.hxx ../source/token_impl.hxx ../source/token.hxx \
+ ../source/utf8.hxx ../source/ilexicon.hxx ../source/datrie.hxx \
+ ../source/double_array.hxx ../source/mmap.hxx ../source/utf8.hxx
+../obj/processor.o: processor.cxx processor.hxx ../source/config_factory.hxx \
+ ../source/iconfig.hxx ../source/simple_config.hxx \
+ ../source/token_impl.hxx ../source/token.hxx ../source/utf8.hxx

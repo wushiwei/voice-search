@@ -1,0 +1,13 @@
+findscn是一个基于nlpbamboo的中文人名识别工具
+    -c 开启高亮
+    -n 显示行号
+    -i 只输出人名 
+用法举例:
+cat example1.txt | ./findscn
+./findscn -c -n example1.txt
+./findscn -c -n -i *.txt 
+
+致谢
+nlpbamboo http://code.google.com/p/nlpbamboo
+crf++ http://crfpp.sourceforge.net/
+搜狗输入法细胞词库 http://pinyin.sogou.com/dict/
