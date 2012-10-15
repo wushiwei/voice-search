@@ -4,7 +4,15 @@ class PagesController < ApplicationController
   def home
     if params[:q]
       @query = params[:q]
-      @answer = search @query
+      names = search @query
+      if names.empty?
+        @answer = "not found"
+        @alternates = []
+      else
+        @answer = names.first
+        names.delete @answer
+        @alternates = names
+      end
     end
   end
 
@@ -19,12 +27,12 @@ class PagesController < ApplicationController
         text += html2text html
       end
       names = name_filter text
-      name = who_optimizer query, names
-      name
+      names = who_optimizer query, names
     end
 
     def search_engine query, page
       enc_uri = URI.escape "http://www.baidu.com/s?wd=#{query}&pn=#{page*10}"
+      #enc_uri = URI.escape "http://www.google.com/#q=#{query}&start=#{page*10}"
       uri = URI.parse enc_uri
       uri.read
     end
@@ -59,10 +67,10 @@ class PagesController < ApplicationController
 
     def who_optimizer query, names
       names.each do |name|
-        if not query.include? name
-          return name
+        if query.include? name
+          names.delete name
         end
       end
-      "not found"
+      names
     end
 end

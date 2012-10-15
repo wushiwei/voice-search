@@ -3,6 +3,8 @@
 <button type="submit" class="btn">Search</button>
 </form>
 <% if @query %>
-<h3>Anwser</h3>
+<h3>Answer</h3>
 <p><%= @answer %></p>
+<h3>Alternative Answers</h3>
+<p><%= @alternates.join ', ' %></p>
 <% end %>
