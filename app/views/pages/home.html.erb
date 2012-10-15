@@ -1,0 +1,8 @@
+<form class="form-search" action="/">
+<input name="q" type="text" <%= "value=#{@query}" if @query %> class="input-medium search-query" x-webkit-speech>
+<button type="submit" class="btn">Search</button>
+</form>
+<% if @query %>
+<h3>Anwser</h3>
+<p><%= @answer %></p>
+<% end %>

@@ -32,7 +32,7 @@
 
     <!-- For all other devices -->
     <!-- Size should be 32 x 32 pixels -->
-    <%= favicon_link_tag 'images/favicon.ico', :rel => 'shortcut icon' %>
+    <%= favicon_link_tag '/favicon.ico', :rel => 'shortcut icon' %>
   </head>
   <body>
 
@@ -44,12 +44,10 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">VoiceSearch</a>
+          <a class="brand" href="/">VoiceSearch</a>
           <div class="container-fluid nav-collapse">
             <ul class="nav">
-              <li><%= link_to "Link1", "/path1"  %></li>
-              <li><%= link_to "Link2", "/path2"  %></li>
-              <li><%= link_to "Link3", "/path3"  %></li>
+              <li><%= link_to "About", "/about"  %></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -58,24 +56,14 @@
 
     <div class="container-fluid">
       <div class="row-fluid">
-        <div class="span3">
-          <div class="well sidebar-nav">
-            <ul class="nav nav-list">
-              <li class="nav-header">Sidebar</li>
-              <li><%= link_to "Link1", "/path1"  %></li>
-              <li><%= link_to "Link2", "/path2"  %></li>
-              <li><%= link_to "Link3", "/path3"  %></li>
-            </ul>
-          </div><!--/.well -->
-        </div><!--/span-->
-        <div class="span9">
+        <div class="span12">
           <%= bootstrap_flash %>
           <%= yield %>
         </div>
       </div><!--/row-->
 
       <footer>
-        <p>&copy; Company 2012</p>
+        <p>&copy; DongQS 2012</p>
       </footer>
 
     </div> <!-- /container -->

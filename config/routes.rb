@@ -1,4 +1,22 @@
 VoiceSearch::Application.routes.draw do
+  get "api/search"
+
+  get "api/speech2text"
+
+  get "api/search_engine"
+
+  get "api/html2plain"
+
+  get "api/name_filter"
+
+  get "api/who_optimizer"
+
+  get "api/text2speech"
+
+  root :to => "pages#home"
+
+  match "about" => "pages#about"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
